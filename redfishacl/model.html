@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Model Description</title>
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script>
+  window.MathJax = {
+    tex: {
+      ams: {
+        multlineWidth: '85%'
+      },
+      tags: 'ams',
+      tagSide: 'right',
+      tagIndent: '.8em'
+    },
+    chtml: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    svg: {
+      scale: 1.0,
+      displayAlign: 'center',
+      displayIndent: '0em'
+    },
+    output: {
+      font: 'mathjax-modern',
+      displayOverflow: 'overflow'
+    }
+  };
+</script>
+
+<script
+  id="MathJax-script"
+  async
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+</script>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Model Description</h1>
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb7fee92">1. Model Structure</a>
+<ul>
+<li><a href="#org7576951">1.1. Population Dynamics</a>
+<ul>
+<li><a href="#org856ce3b">1.1.1. Numbers at age</a></li>
+<li><a href="#org00258b8">1.1.2. Mortality</a></li>
+<li><a href="#org631c0c0">1.1.3. Growth Function</a></li>
+<li><a href="#org5103b59">1.1.4. Catch at age</a></li>
+<li><a href="#org2b58b9f">1.1.5. Converting to Numbers at length</a></li>
+</ul>
+</li>
+<li><a href="#org1d925b6">1.2. Observation Equations</a>
+<ul>
+<li><a href="#orgd95c3da">1.2.1. Survey</a></li>
+<li><a href="#org34e3c68">1.2.2. Landings</a></li>
+<li><a href="#org02d89c5">1.2.3. Calculated Quantities</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<p>
+<a href="./index.html">Index</a>
+</p>
+<p>
+\(
+\newcommand{\bm}[1]{\boldsymbol{\mathbf{#1}}}
+\)
+</p>
+
+<p>
+<i>Note: Citiations are bugged in exporting to HTML and so look weird.</i>
+</p>
+
+<div id="outline-container-orgb7fee92" class="outline-2">
+<h2 id="orgb7fee92"><span class="section-number-2">1.</span> Model Structure</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org7576951" class="outline-3">
+<h3 id="org7576951"><span class="section-number-3">1.1.</span> Population Dynamics</h3>
+<div class="outline-text-3" id="text-1-1">
+</div>
+<div id="outline-container-org856ce3b" class="outline-4">
+<h4 id="org856ce3b"><span class="section-number-4">1.1.1.</span> Numbers at age</h4>
+<div class="outline-text-4" id="text-1-1-1">
+<p>
+Age structured
+</p>
+
+<p>
+Recruits are handled via. a Normal random walk:
+</p>
+
+\begin{equation}
+\label{eq:recruitment}
+\log(R_{t+1}) \sim N(\log(R_t),\sigma_R)
+\end{equation}
+
+<ul class="org-ul">
+<li>\(R_t\) number of recruits in year \(t\)</li>
+<li>\(\sigma_R\) is the std. dev parameter of recruitment</li>
+</ul>
+
+<p>
+Initial numbers at age (except recruits) are handled assuming normally distributed steady state distribution with a fixed std. dev.
+</p>
+
+\begin{equation}
+\label{eq:initialN}
+\log(N_{a,0})-\log(N_{a-1,0}) \sim N(-Z_{a-1,0},\sigma_{N0})
+\end{equation}
+
+<ul class="org-ul">
+<li>\(N_{a,y}\) is the matrix of numbers at age, with \(A\) rows and \(Y\) columns standings for number of ages and years respectively</li>
+<li>\(Z_{a,y}\) is the matrix of mortality at age</li>
+<li>\(\sigma_{N0}\) is the standard deviation parameter of the initial numbers at age</li>
+</ul>
+
+<p>
+Remaining ages handled by std. age structured cohort equations
+</p>
+
+\begin{equation}
+\label{eq:stdcohort}
+N_{a,y} = 
+\begin{cases}
+N_{a-1,y-1}e^{-Z_{a-1,y-1}} \quad \text{ if } a < A \\
+N_{a-1,y-1}e^{-Z_{a-1,y-1}} + N_{a,y-1}e^{-Z_{a,y-1}} \quad \text{ if } a = A
+\end{cases}
+\end{equation}
+
+<p>
+Can optionally do SAM style process error where
+</p>
+\begin{equation}
+\label{eq:SAMstyle}
+\log(N_{a,y}) \sim N(\hat{N}_{a,y},\sigma_{s})
+\end{equation}
+
+<ul class="org-ul">
+<li>\(\hat{N}_{a,y}\) comes from above cohort eq.</li>
+<li>\(\sigma_s\) is std. dev of survival/emmigration</li>
+</ul>
+</div>
+</div>
+
+
+<div id="outline-container-org00258b8" class="outline-4">
+<h4 id="org00258b8"><span class="section-number-4">1.1.2.</span> Mortality</h4>
+<div class="outline-text-4" id="text-1-1-2">
+<p>
+The mortality matrix \(\bm{Z}\) (again \(A \times Y\)) is defined as
+</p>
+
+\begin{equation}
+\label{eq:ZZZ}
+\bm{Z} = \bm{M} + \bm{F}
+\end{equation}
+
+<p>
+\(\bm{M} = 0.125\) for all elements based on median of Fig. 4 of ({C}adigan, {N}oel {G}. and {D}uplisea, {D}.{E}. and {S}enay, {C}. and {P}arent, {G}.{J}. and {W}inger, {P}.{D}. and {L}inton, {B}. and {K}ristinsson, {K}., 2022)
+</p>
+
+<p>
+Fishing mortality, \(\bm{F}\), is assumed seperable by age and year, no fishing assumed on individuals \(\leq 2\) years of age,
+</p>
+
+\begin{equation}
+\label{Fsep}
+F_{a,y} =
+\begin{cases}
+0 \quad \text{ if } a \leq 2 \\
+F_a + F_y \quad \text{otherwise}
+\end{cases}
+\end{equation}
+
+<p>
+where both \(F_a\) and \(F_y\) are treated as random walks,
+</p>
+
+\begin{equation}
+\label{eq:Fasep}
+\log(F_a) \sim N(\log(F_{a-1}),\sigma_{Fa})
+\end{equation}
+<p>
+and 
+</p>
+\begin{equation}
+\label{eq:Fysep}
+\log(F_y) \sim N(\log(F_{y-1}),\sigma_{Fy})
+\end{equation}
+
+<ul class="org-ul">
+<li>\(\sigma_{Fa}\) and \(\sigma_{Fy}\) are the respective std. dev. parameters. Currently \(\sigma_{Fa}\) needs to be fixed.</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org631c0c0" class="outline-4">
+<h4 id="org631c0c0"><span class="section-number-4">1.1.3.</span> Growth Function</h4>
+<div class="outline-text-4" id="text-1-1-3">
+<p>
+The growth function uses the Von Bertalanffy growth function as parameterized
+in ({S}chnute, {J}on and {F}ournier, {D}avid, 1980). This form instead estimates the mean
+length of the first age component in the model, \(l\), the mean length of the last age component \(L\) and
+the rate of growth between two age components \(k\). These can easily be converted back into the standard VB parameters using the
+following equations:
+</p>
+
+\begin{equation}
+\label{eq:linf}
+L_{\infty} = \frac{L-l k^{A-1}}{1-k^{A-1}},
+\end{equation}
+
+\begin{equation}
+\label{eq:vbK}
+K = -log(k), \text{ and }
+\end{equation}
+
+\begin{equation}
+\label{eq:tzero}
+t_0 = a_1 - \frac{1}{\log(k)}\bigg ( \frac{L-l}{L-l k^{A-1}} \bigg )
+\end{equation}
+
+<p>
+\(a_1\) is the starting age of the model.
+</p>
+
+<p>
+The mean length of a fish aged \(a_i\) is
+</p>
+\begin{equation}
+\label{eq:meanlen}
+\mu_{L(a_i)}  = l+(L-l)\frac{1-k^{i-1}}{1-k^{A-1}}, \quad l < L
+\end{equation}
+
+<p>
+\[
+a_i = a_1 + i-1, \quad i = 1,...,A
+\]
+</p>
+
+<p>
+The standard deviation of the growth curve is currently assumed to be a linear function of the mean length at age and
+we estimate two parameters for the std. dev of the first and last age components. The std. dev. for other age classes is
+defined as
+</p>
+
+\begin{equation}
+\label{eq:sdlen}
+\sigma_{L(a_i)} = s+(S-s)\frac{\mu_{L(a_i)}-l}{L-l}.
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org5103b59" class="outline-4">
+<h4 id="org5103b59"><span class="section-number-4">1.1.4.</span> Catch at age</h4>
+<div class="outline-text-4" id="text-1-1-4">
+<p>
+Catch at age is done using the Baranov catch equation:
+</p>
+
+\begin{equation}
+\label{eq:baranov}
+C_{a,y} = N_{a,y}(1-e^{-Z_{a,y}})\bigg ( \frac{F_{a,y}}{Z_{a,y}} \bigg )
+\end{equation}
+</div>
+</div>
+
+<div id="outline-container-org2b58b9f" class="outline-4">
+<h4 id="org2b58b9f"><span class="section-number-4">1.1.5.</span> Converting to Numbers at length</h4>
+<div class="outline-text-4" id="text-1-1-5">
+<p>
+The model uses 1 cm bins with zero as the midpoint (e.g., [8.5,9.5) cm) starting at 1 (\(len_{min}\)) through 45 cm (\(len_{max}\)). Lengths at age are
+assumed to be normally distributed with the values of \(\mu_{L(a_i)}\) and \(\sigma_{L(a_i)}\) described above. A probability of
+length at age matrix \(bm{P}_{L(a)}\) is used to convert between numbers at age and numbers at length. 
+</p>
+
+<p>
+Each element \(P_{ij}\) is the probablity of an individual of age \(i\) being in length bin \(j\):
+</p>
+\begin{equation}
+\label{eq:problen}
+P_{ij}  =
+\begin{cases} 
+\Phi \bigg ( \frac{len_{min}-\mu_{L(a_i)}}{\sigma_{L(a_i)}} \bigg ), \quad bin_j = [0,len_{min}) \\
+1 - \Phi \bigg ( \frac{len_{max}-\mu_{L(a_i)}}{\sigma_{L(a_i)}} \bigg ), \quad bin_j = [len_{max},\infty) \\
+\Phi \bigg ( \frac{len_{hi} - \mu_{L(a_i)}}{\sigma_{L(a_i)}} \bigg ) - \Phi \bigg ( \frac{len_{lo} - \mu_{L(a_i)}}{\sigma_{L(a_i)}} \bigg ), \text{ otherwise}
+\end{cases} 
+\end{equation}
+
+<p>
+where \(\Phi\) is the standard normal CDF and \(len_{lo}\) and \(len_{hi}\) are
+the lower and upper elements of each length bin.
+</p>
+
+<p>
+The numbers at age \(\bm{N}_a\) and catch at age \(\bm{C}_a\)  can be converted to their length equivalents by premultipling by the
+probability of length at age matrix
+</p>
+
+\begin{equation}
+\label{eq:numatlen}
+\bm{N}_{L} = \bm{P}_{L(a)} \bm{N}_{A}
+\end{equation}
+<p>
+and
+</p>
+\begin{equation}
+\label{eq:catlen}
+\bm{C}_L = \bm{P}_{L(a)} \bm{C}_A.
+\end{equation}
+</div>
+</div>
+</div>
+
+<div id="outline-container-org1d925b6" class="outline-3">
+<h3 id="org1d925b6"><span class="section-number-3">1.2.</span> Observation Equations</h3>
+<div class="outline-text-3" id="text-1-2">
+</div>
+<div id="outline-container-orgd95c3da" class="outline-4">
+<h4 id="orgd95c3da"><span class="section-number-4">1.2.1.</span> Survey</h4>
+<div class="outline-text-4" id="text-1-2-1">
+<p>
+The survey indices, \(I_{l,y}\) for length \(l\) in year \(y\) are
+</p>
+
+\begin{equation}
+\label{eq:sur}
+\log(I_{l,y}) = log(q_{l} N_{l,y}) + \varepsilon \quad \varepsilon \sim N(0,\sigma_{I})
+\end{equation}
+
+<p>
+Where \(q_{l}\) is the catachability of the survey at length. There is only one survey on converted to Campelen indices in the model and we only have landings information
+so it's not possible to estimate \(q_{l}\) except for \(q_{max}\). Right now I'm assuming a logistic \(q\). This was somewhat based at looking at the 3LNO redfish model
+but is not based on a whole lot.  
+</p>
+
+\begin{equation}
+q_{l} = \frac{q_{max}}{1+e^{(-k(l-q_{50}))}}
+\end{equation}
+
+<p>
+Here \(q_{max}\) is estimated, \(q_{50}=15\), and
+\[
+k = -\log \bigg( \frac{0.05}{0.95} \bigg ) \times \frac{1}{q_{95}-q_{50}}
+\]
+where \(q_{95} = 23\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org34e3c68" class="outline-4">
+<h4 id="org34e3c68"><span class="section-number-4">1.2.2.</span> Landings</h4>
+<div class="outline-text-4" id="text-1-2-2">
+<p>
+The landings in year \(y\), \(T_y\), are defined as
+</p>
+
+\begin{equation}
+\label{eq:landings}
+\log(T_y) = \log \bigg(\sum_{l=1}^{45} W_{l,y} C_{l,y} \bigg ) + \varepsilon \quad \varepsilon \sim N(0,\sigma_{T})
+\end{equation}
+
+<p>
+\(W_{l,y}\) is the weight at length \(l\) in year \(y\).
+</p>
+
+<p>
+To fit to the landings at all \(\sigma_T\) must be fixed. 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org02d89c5" class="outline-4">
+<h4 id="org02d89c5"><span class="section-number-4">1.2.3.</span> Calculated Quantities</h4>
+<div class="outline-text-4" id="text-1-2-3">
+<p>
+Spawning Stock Biomass:
+</p>
+
+\begin{equation}
+\label{SSB}
+
+SSB_y = \sum_{l=1}^{45} MAT_{l,y} W_{l,y} N_{l,y}
+\end{equation}
+
+<p>
+where \(MAT_{l,y}\) is the proportion mature at length \(l\) in year \(y\).
+</p>
+
+<p>
+[1] {C}adigan, {N}oel {G}. and {D}uplisea, {D}.{E}. and {S}enay, {C}. and {P}arent, {G}.{J}. and {W}inger, {P}.{D}. and {L}inton, {B}. and {K}ristinsson, {K}., <i>{N}orthwest {A}tlantic redfish science priorities for managing an enigmatic species complex</i>, {C}anadian {S}cience {P}ublishing, 2022.</p>
+
+<p>
+[2] {S}chnute, {J}on and {F}ournier, {D}avid, <i>{A} {N}ew {A}pproach to {L}ength–{F}requency {A}nalysis: {G}rowth {S}tructure</i>, {C}anadian {S}cience {P}ublishing, 1980.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

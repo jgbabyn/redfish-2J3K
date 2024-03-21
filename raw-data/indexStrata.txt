@@ -1,0 +1,6 @@
+Index Strata 2J:  strat = c(203, 204, 208:219, 222:224, 227:231, 235, 236, 239, 240)
+Index Stata 3K: strat = c(617, 620:631, 633:654)
+
+#For the following I think index stata==all strata
+All strata 2H: 930:964
+All staata 2G: 901:929
